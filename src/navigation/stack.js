@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Welcome from "../features/Welcome";
-import FlexBoxes from "../features/FlexBoxes";
+import Welcome from "../screens/Welcome";
+import FlexBoxes1 from "../screens/FlexBoxes/FlexBox1";
 
 const Stack = createNativeStackNavigator()
 
@@ -14,8 +14,8 @@ const StackNavigation = () => {
                     component={Welcome}
                 />
                 <Stack.Screen
-                    name="FlexBoxes"
-                    component={FlexBoxes}
+                    name="Flex Boxes"
+                    component={FlexBoxes1}
                 />
             </Stack.Navigator>
         </NavigationContainer>

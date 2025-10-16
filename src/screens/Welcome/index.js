@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import { useRoute, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import stylesFn from "./styles";
 
 export default function Welcome() {
@@ -16,7 +16,7 @@ export default function Welcome() {
         <TouchableOpacity
           style={styles.midThirdBox}
           onPress={() => {
-            navigate("FlexBoxesScreen")
+            navigate("Flex Boxes") //This needs to match the name in the nav file
           }}
         >
           <Text>Go to Flex Boxes!</Text>

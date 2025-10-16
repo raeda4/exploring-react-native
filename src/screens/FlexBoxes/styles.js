@@ -4,13 +4,25 @@ const stylesFn = () => {
     return StyleSheet.create({
         topThird: {
             flex: 1, 
-            backgroundColor: 'red'
+            backgroundColor: 'red',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
         },
         topThirdBox: {
             height: 100, 
             width: 100, 
             backgroundColor: 'yellow',
             border: 'solid'
+        }, 
+        topThirdBackButton: {
+            height: 50, 
+            width: 100, 
+            backgroundColor: 'gray',
+            border: 'solid',
+            alignSelf: 'center',
+            justifySelf: 'end',
+            alignItems: 'center',
+            justifyContent: 'center'
         }, 
         midThird: { 
             flex: 1, 

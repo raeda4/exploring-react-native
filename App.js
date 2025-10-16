@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native';
 import StackNavigation from './src/navigation/stack';
-import TabNavigation from './src/navigation/tabs';
+import Navigation from './src/navigation/navigation';
 
 export default function App() {
   return (
     //<StackNavigation />
-    <TabNavigation />
+    <Navigation />
   );
 }
 

@@ -2,11 +2,35 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import Welcome from "../screens/Welcome";
-import FlexBoxes1 from "../screens/FlexBoxes/FlexBox1";
+import FlexBox1 from "../screens/FlexBoxes/FlexBox1";
+import FlexBox2 from "../screens/FlexBoxes/FlexBox2";
+import FlexBox3 from "../screens/FlexBoxes/FlexBox3";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 const Tab = createBottomTabNavigator();
+const FlexBoxStackNav = createNativeStackNavigator();
 
-const TabNavigation = () => {
+function FlexBoxStackScreen() {
+  return (
+    <FlexBoxStackNav.Navigator>
+      <FlexBoxStackNav.Screen
+        name="First Flex Box"
+        component={FlexBox1}
+      />
+      <FlexBoxStackNav.Screen
+        name="Second Flex Box"
+        component={FlexBox2}
+      />
+      <FlexBoxStackNav.Screen
+        name="Third Flex Box"
+        component={FlexBox3}
+      />
+    </FlexBoxStackNav.Navigator>
+  )
+}
+
+const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -28,13 +52,13 @@ const TabNavigation = () => {
         })}
       >
         <Tab.Screen name="Welcome" component={Welcome} />
-        <Tab.Screen name="Flex Boxes" component={FlexBoxes1} />
+        <Tab.Screen name="Flex Boxes" component={FlexBoxStackScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
 
-export default TabNavigation
+export default Navigation
 
 
 // I couldn't get the icons to work: https://ionic.io/ionicons
