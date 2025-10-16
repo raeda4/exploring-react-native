@@ -16,7 +16,7 @@ export default function Welcome() {
         <TouchableOpacity
           style={styles.midThirdBox}
           onPress={() => {
-            navigate("FlexBoxes")
+            navigate("FlexBoxesScreen")
           }}
         >
           <Text>Go to Flex Boxes!</Text>

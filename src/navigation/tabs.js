@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@react-native-vector-icons/ionicons';
-import Welcome from "../screens/Welcome";
-import FlexBoxes from "../screens/FlexBoxes";
+import WelcomeScreen from "../screens/Welcome";
+import FlexBoxesScreen from "../screens/FlexBoxes";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +16,7 @@ const TabNavigation = () => {
 
             if (route.name === "Details") {
               iconName = "ios-analytics";
-            } else if (route.name === "Welcome") {
+            } else if (route.name === "WelcomeScreen") {
               iconName = focused ? "ios-add-circle" : "ios-add-circle-outline";
             }
 
@@ -27,8 +27,8 @@ const TabNavigation = () => {
           tabBarInactiveTintColor: "gray",
         })}
       >
-        <Tab.Screen name="Welcome" component={Welcome} />
-        <Tab.Screen name="FlexBoxes" component={FlexBoxes} />
+        <Tab.Screen name="WelcomeScreen" component={WelcomeScreen} />
+        <Tab.Screen name="FlexBoxesScreen" component={FlexBoxesScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
