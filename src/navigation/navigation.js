@@ -1,15 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@react-native-vector-icons/ionicons';
+
 import Welcome from "../screens/Welcome";
 import FlexBox1 from "../screens/FlexBoxes/FlexBox1";
 import FlexBox2 from "../screens/FlexBoxes/FlexBox2";
 import FlexBox3 from "../screens/FlexBoxes/FlexBox3";
+import MadLibs from "../screens/MadLibs";
+
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 
 const Tab = createBottomTabNavigator();
 const FlexBoxStackNav = createNativeStackNavigator();
+const WelcomeStackNav = createNativeStackNavigator();
 
 function FlexBoxStackScreen() {
   return (
@@ -27,6 +32,21 @@ function FlexBoxStackScreen() {
         component={FlexBox3}
       />
     </FlexBoxStackNav.Navigator>
+  )
+}
+
+function WelcomeStackScreen() {
+  return (
+    <WelcomeStackNav.Navigator>
+      <WelcomeStackNav.Screen
+        name="Welcome"
+        component={Welcome}
+      />
+      <WelcomeStackNav.Screen
+        name="MadLibs"
+        component={MadLibs}
+      />
+    </WelcomeStackNav.Navigator>
   )
 }
 
@@ -49,10 +69,19 @@ const Navigation = () => {
           },
           tabBarActiveTintColor: "tomato",
           tabBarInactiveTintColor: "gray",
+          
         })}
       >
-        <Tab.Screen name="Welcome" component={Welcome} />
-        <Tab.Screen name="Flex Boxes" component={FlexBoxStackScreen} />
+        <Tab.Screen 
+          options={{ headerShown: false }} //removes the the tab banner screen name
+          name="Welcome" 
+          component={WelcomeStackScreen} 
+        />
+        <Tab.Screen 
+          options={{ headerShown: false }} //removes the the tab banner screen name
+          name="Flex Boxes" 
+          component={FlexBoxStackScreen} 
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

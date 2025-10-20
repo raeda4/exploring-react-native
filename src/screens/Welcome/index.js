@@ -23,9 +23,14 @@ export default function Welcome() {
         </TouchableOpacity>
       </View>
       <View style={styles.bottomThird}>
-        <View style={styles.bottomThirdBox}>
-          <Text>Third Box</Text>
-        </View>
+        <TouchableOpacity 
+          style={styles.bottomThirdBox}
+          onPress={() => {
+            navigate("MadLibs")
+          }}
+        >
+          <Text>MadLibs!</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )

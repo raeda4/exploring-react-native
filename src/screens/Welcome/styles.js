@@ -35,9 +35,9 @@ const stylesFn = () => {
             height: 150, 
             width: 150, 
             backgroundColor: 'green', 
-            alignSelf: 'end', 
-            alignItems: 'end', 
-            justifyContent: 'end',
+            alignSelf: 'end', // horizontally centers the self aka the green box
+            alignItems: 'center',  // horizontally centers the child elements
+            justifyContent: 'center', // vertically centers the child elements
             border: 'solid' 
         }
     })
