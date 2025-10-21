@@ -8,9 +8,14 @@ export default function Welcome() {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.topThird}>
-        <View style={styles.topThirdBox}>
-          <Text>Test</Text>
-        </View>
+        <TouchableOpacity 
+          style={styles.topThirdBox}
+          onPress={() => {
+            navigate("Books") //This needs to match the name in the nav file
+          }}
+        >
+          <Text>Books</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.midThird}>
         <TouchableOpacity

@@ -9,6 +9,7 @@ import FlexBox3 from "../screens/FlexBoxes/FlexBox3";
 import MadLibs from "../screens/MadLibs";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import NewBook from "../screens/NewBook";
 
 
 
@@ -45,6 +46,10 @@ function WelcomeStackScreen() {
       <WelcomeStackNav.Screen
         name="MadLibs"
         component={MadLibs}
+      />
+      <WelcomeStackNav.Screen
+        name="Books"
+        component={NewBook}
       />
     </WelcomeStackNav.Navigator>
   )
