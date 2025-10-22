@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { useUpdateFields } from "../hooks";
+import { useUpdateFields, submitButton } from "../hooks";
 import stylesFn from "./styles";
 
 const AddBook = () => {
@@ -36,6 +36,7 @@ const AddBook = () => {
 
       <TouchableOpacity
         style={styles.submitButton}
+        onPress={() => {submitButton}}
       >
         <Text>Submit</Text>
       </TouchableOpacity>
