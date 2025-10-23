@@ -11,7 +11,7 @@ export default function Welcome() {
         <TouchableOpacity 
           style={styles.topThirdBox}
           onPress={() => {
-            navigate("Books") //This needs to match the name in the nav file
+            navigate("Library") //This needs to match the name in the nav file
           }}
         >
           <Text>Books</Text>
