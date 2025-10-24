@@ -42,11 +42,6 @@ function WelcomeStackScreen() {
         name="Welcome"
         component={Welcome}
       />
-      <WelcomeStackNav.Screen
-        name="Library"
-        component={LibraryStackScreen}
-        options={{ headerShown: false }} //removes the the tab banner screen name
-      />
     </WelcomeStackNav.Navigator>
   )
 }

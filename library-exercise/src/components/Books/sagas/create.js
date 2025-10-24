@@ -12,20 +12,23 @@ export function* takeCreateBook() {
     console.log('Start fetch request to API')
     try {
         const fields = yield select(state => state.book.form.fields)
-        const books = yield select(state => state.book.list.library)
+        const library = yield select(state => state.book.list.library)
 
         const book = {
-            id: books.length + 1,
+            id: library.length + 1,
             ...fields,
         }
 
         //preted call to API
         yield delay(500)
+        console.log('Finish API Call')
 
-        const result = [book, ...books]
+        const result = [book, ...library]
+        console.log(result)
 
         yield put(actions.createBookResult(result))
     } catch (error) {
         yield put(actions.createBookError(error.toString()))
+        console.log('sagas/create.js error')
     }
 }

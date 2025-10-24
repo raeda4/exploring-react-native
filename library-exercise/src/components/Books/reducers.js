@@ -46,12 +46,14 @@ const reducers = {
   createBookResult: (state, payload) => {
     state.edit.status = SUCCESS;
     state.list.library = payload;
+    console.log(payload)
     state.form.fields = initialState.form.fields;
     state.create = initialState.create;
   },
-  createBookError: (state) => {
+  createBookError: (state, { payload }) => {
     state.edit.status = ERROR;
     state.error.message = payload;
+    state.form.fields = initialState.form.fields
   },
   editBook: (state, { payload }) => {
     state.edit.status = REQUESTING;
@@ -60,7 +62,7 @@ const reducers = {
     console.log("editBook, payload: ", payload);
   },
   setForm: (state, { payload }) => {
-    const book = state.list.books.find((a) => (a.id = payload));
+    const book = state.list.library.find((a) => (a.id = payload));
 
     if (book) {
       state.form.fields = book;

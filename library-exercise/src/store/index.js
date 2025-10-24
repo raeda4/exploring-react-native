@@ -1,27 +1,29 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import reducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 
-//const sagaMiddleware = createSagaMiddleware();
-
 const initializeStore = (preloadedState = {}) => {
+  const sagaMiddleware = createSagaMiddleware();
+
   const store = configureStore({
-    reducer,
+    reducer: rootReducer, // ✅ correct key name
     preloadedState,
-  })
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware), // ✅ correct middleware usage
+  });
 
-  return store
-}
+  sagaMiddleware.run(rootSaga);
 
-//sagaMiddleware.run(rootSaga);
+  return store;
+};
 
 export default initializeStore;
 
 
 //Back code because this at least allows the app to load, athough it doesn't update the Library
 
-/* 
+/*
 
 const initializeStore = (preloadedState = {}) => {
   const store = configureStore({
