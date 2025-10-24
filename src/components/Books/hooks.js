@@ -8,7 +8,7 @@ export const useUpdateFields = (bookID = null) => {
   const status = useSelector(state => state.book.edit.status)
   const fields = useSelector(state => state.book.form.fields)
 
-  console.log("Book ID :::", bookID, status, bookID && status !== INPROGRESS)
+  //console.log("Book ID :::", bookID, status, bookID && status !== INPROGRESS)
 
   useEffect(() => {
     if (bookID && status === PENDING) {
@@ -19,10 +19,10 @@ export const useUpdateFields = (bookID = null) => {
   return {
     fields,
     setFormField: (field, value) => {
-      console.log('Updating field ${field} to ${value}')
+      //console.log('Updating field ${field} to ${value}')
 
       dispatch(actions.setFormField({ field, value }))
-    }
+    },
   }
 }
   
@@ -59,5 +59,5 @@ export const useEditBookStatus = () => {
 }
 
 export const useLibraryBooks = () => {
-  return useSelector(state => state.book.list.books) // this is different from the solutions. If it correclated correctly it would be 'state.book.library.books' link: https://github.com/udacity/cd0444-react-native-exercises/blob/main/lesson-4-forms/exercises/solution/exercise-3-solution/src/features/animal/hooks.js
+  return useSelector(state => state.book.list.library) // this is different from the solutions. If it correclated correctly it would be 'state.book.library.books' link: https://github.com/udacity/cd0444-react-native-exercises/blob/main/lesson-4-forms/exercises/solution/exercise-3-solution/src/features/animal/hooks.js
 }

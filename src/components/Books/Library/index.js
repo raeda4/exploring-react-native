@@ -6,8 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 
 const Library = () => {
   const styles = stylesFn();
-  const books = useLibraryBooks();
   const { navigate } = useNavigation();
+  const books = useLibraryBooks();
 
   return (
     <View>

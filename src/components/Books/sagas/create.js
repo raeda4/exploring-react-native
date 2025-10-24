@@ -1,8 +1,11 @@
 import { all, put, select, takeLatest, delay } from 'redux-saga/effects'
 import * as actions from '../reducers'
 
+console.log('create saga')
+
 export function* watchCreateBook() {
     yield takeLatest(actions.createBook.toString(), takeCreateBook)
+    console.log('create saga - watchCreateBook function')
 }
 
 export function* takeCreateBook() {

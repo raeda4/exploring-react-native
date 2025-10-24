@@ -13,6 +13,7 @@ const initialState = {
   list: {
     status: PENDING,
     library: [{
+      id: 1,
       title: 'Parable of the Sower',
       author: 'Octavia Butler',
       publication_date: '1985'
@@ -40,7 +41,7 @@ const reducers = {
   createBook: (state) => {
     state.create.status = REQUESTING;
     console.log(state.create.status);
-    console.log(form.fields);
+    console.log('createBook Reducer')
   },
   createBookResult: (state, payload) => {
     state.edit.status = SUCCESS;
