@@ -1,12 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { PENDING, REQUESTING, SUCCESS, ERROR } from "../../utilities/helpers";
+import {
+  PENDING,
+  INPROGRESS,
+  REQUESTING,
+  SUCCESS,
+  ERROR,
+} from "../../utilities/helpers";
 
 const name = "book";
 
 const initialState = {
   list: {
     status: PENDING,
-    library: [],
+    library: [{
+      title: 'Parable of the Sower',
+      author: 'Octavia Butler',
+      publication_date: '1985'
+    }],
   },
   form: {
     fields: {
@@ -29,27 +39,46 @@ const initialState = {
 const reducers = {
   createBook: (state) => {
     state.create.status = REQUESTING;
-    console.log(state.create.status)
-    console.log(form.fields)
+    console.log(state.create.status);
+    console.log(form.fields);
   },
   createBookResult: (state, payload) => {
     state.edit.status = SUCCESS;
     state.list.library = payload;
+    state.form.fields = initialState.form.fields;
+    state.create = initialState.create;
   },
   createBookError: (state) => {
     state.edit.status = ERROR;
     state.error.message = payload;
   },
-  createBookReset: (state) => {
-    state.edit = initialState.edit;
-  },
-  testPost: (state, { payload }) => {
-    // I'm not sure this is right
+  editBook: (state, { payload }) => {
     state.edit.status = REQUESTING;
+    console.log(state.create.status);
+    console.log(form.fields);
+    console.log("editBook, payload: ", payload);
   },
-  testPostResult: (state, { payload }) => {
+  setForm: (state, { payload }) => {
+    const book = state.list.books.find((a) => (a.id = payload));
+
+    if (book) {
+      state.form.fields = book;
+    } else {
+      state.error.message = `could not find book with id: ${payload}`;
+    }
+  },
+  editBookResult: (state, payload) => {
     state.edit.status = SUCCESS;
     state.list.library = payload;
+    state.form.fields = initialState.form.fields;
+    state.edit = initialState.edit;
+  },
+  editBookError: (state) => {
+    state.edit.status = ERROR;
+    state.error.message = payload;
+  },
+  editBookStatus: (state, { payload }) => {
+    state.edit = payload;
   },
   setFormField: (state, { payload }) => {
     const current = state.form.fields;
@@ -74,9 +103,11 @@ export const {
   createBook,
   createBookResult,
   createBookError,
-  createBookReset,
-  testPost,
-  testPostResult,
+  setForm,
+  editBook,
+  editBookResult,
+  editBookError,
+  editBookStatus,
   setFormField,
 } = slice.actions;
 

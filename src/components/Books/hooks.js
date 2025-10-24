@@ -1,23 +1,32 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { PENDING, INPROGRESS } from '../../utilities/helpers'
 import * as actions from './reducers'
 
-export const useUpdateFields = (bookID) => {
+export const useUpdateFields = (bookID = null) => {
   const dispatch = useDispatch()
-  let fields;
-  
-  if (bookID) {
-    fields = useSelector(state => state.book.library.books.find(a => a.id === bookID))
-  }
-  fields = useSelector(state => state.book.form.fields)
+  const status = useSelector(state => state.book.edit.status)
+  const fields = useSelector(state => state.book.form.fields)
+
+  console.log("Book ID :::", bookID, status, bookID && status !== INPROGRESS)
+
+  useEffect(() => {
+    if (bookID && status === PENDING) {
+      dispatch(actions.setForm(bookID))
+    }
+  }, [bookID, status])
 
   return {
     fields,
-    setFormField: (field) => (value) => { 
-      //console.log(`Updating field ${field} to ${value}`)
-      return dispatch(actions.setFormField({ field, value }))
-    },
+    setFormField: (field, value) => {
+      console.log('Updating field ${field} to ${value}')
+
+      dispatch(actions.setFormField({ field, value }))
+    }
   }
 }
+  
+
 export const useNewBook = () => {
   const dispatch = useDispatch()
 
@@ -29,18 +38,26 @@ export const useNewBook = () => {
   }
 }
 
+export const useCreateBookStatus = () =>{
+  return useSelector(state => state.book.create.status)
+}
 
-export const useTestPost = () => {
+
+export const useEditBook = (bookID) => {
   const dispatch = useDispatch()
 
   return {
     onSubmit: () => {
-      console.log('Dispatching testPost')
-      dispatch(actions.testPost())
+      console.log('Dispatching editBook action')
+      dispatch(actions.editBook(bookID))
     }
   }
 }
 
+export const useEditBookStatus = () => {
+  return useSelector(state => state.book.edit.status)
+}
+
 export const useLibraryBooks = () => {
-  return useSelector(state => state.book.library) // this is different from the solutions. If it correclated correctly it would be 'state.book.library.books' link: https://github.com/udacity/cd0444-react-native-exercises/blob/main/lesson-4-forms/exercises/solution/exercise-3-solution/src/features/animal/hooks.js
+  return useSelector(state => state.book.list.books) // this is different from the solutions. If it correclated correctly it would be 'state.book.library.books' link: https://github.com/udacity/cd0444-react-native-exercises/blob/main/lesson-4-forms/exercises/solution/exercise-3-solution/src/features/animal/hooks.js
 }

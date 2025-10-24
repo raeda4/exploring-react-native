@@ -11,6 +11,7 @@ import MadLibs from "../screens/MadLibs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NewBook from "../screens/Library/NewBook";
 import LibraryScreen from "../screens/Library/Library";
+import EditBook from "../screens/Library/EditBook";
 
 
 
@@ -48,6 +49,10 @@ function LibraryStackScreen() {
       <LibraryStackNav.Screen
         name="Add Book"
         component={NewBook}
+      />
+      <LibraryStackNav.Screen
+        name="Edit Book"
+        component={EditBook}
       />
     </LibraryStackNav.Navigator>
   )
