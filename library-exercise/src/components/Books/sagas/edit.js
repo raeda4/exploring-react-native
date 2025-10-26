@@ -5,9 +5,9 @@ export function* watchEditBook() {
     yield takeLatest(actions.editBook.toString(), takeEditBook)
 }
 
-export function* takeEditBook() {
+export function* takeEditBook(action) {
     console.log('Start fetch request to API to edit')
-    const bookID = actions.payload
+    const bookID = action.payload
 
     try {
         const fields = yield select(state => state.book.form.fields)

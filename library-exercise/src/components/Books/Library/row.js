@@ -6,7 +6,8 @@ const Row = ({ item }) => {
     const { navigate } = useNavigation()
 
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            onPress={ () => navigate('Edit Book', { bookID: item.id })} >
             <View key={item.id} style={{ borderWidth: 1, padding: 10, margin: 10 }}>
                 <Text key={'id'}>ID: {item.id}</Text>
                 <Text key={'fn'}>Title: {item.title}</Text>

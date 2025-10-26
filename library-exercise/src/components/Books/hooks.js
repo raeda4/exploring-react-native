@@ -25,7 +25,7 @@ export const useUpdateFields = (bookID = null) => {
     },
   }
 }
-  
+
 
 export const useNewBook = () => {
   const dispatch = useDispatch()
@@ -38,15 +38,17 @@ export const useNewBook = () => {
   }
 }
 
-export const useCreateBookStatus = () =>{
+export const useCreateBookStatus = () => {
   return useSelector(state => state.book.create.status)
 }
 
 
 export const useEditBook = (bookID) => {
   const dispatch = useDispatch()
+  const status = useEditBookStatus()
 
   return {
+    status,
     onSubmit: () => {
       console.log('Dispatching editBook action')
       dispatch(actions.editBook(bookID))
@@ -59,5 +61,5 @@ export const useEditBookStatus = () => {
 }
 
 export const useLibraryBooks = () => {
-  return useSelector(state => state.book.list.library) // this is different from the solutions. If it correclated correctly it would be 'state.book.library.books' link: https://github.com/udacity/cd0444-react-native-exercises/blob/main/lesson-4-forms/exercises/solution/exercise-3-solution/src/features/animal/hooks.js
+  return useSelector(state => state.book.list.library) 
 }

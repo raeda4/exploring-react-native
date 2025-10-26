@@ -43,26 +43,31 @@ const reducers = {
     console.log(state.create.status);
     console.log('createBook Reducer')
   },
-  createBookResult: (state, payload) => {
-    state.edit.status = SUCCESS;
+  createBookResult: (state, { payload }) => {
+    state.create.status = SUCCESS;
     state.list.library = payload;
-    console.log(payload)
+    console.log('creatBookResult payload: ', payload)
     state.form.fields = initialState.form.fields;
     state.create = initialState.create;
+    console.log('createBookResult library list: ', initialState.list.library)
+    /* 
+    state.create.status = SUCCESS
+    state.list.animals = payload
+    state.form.fields = initialState.form.fields
+    state.create = initialState.create
+    */
   },
   createBookError: (state, { payload }) => {
-    state.edit.status = ERROR;
+    state.create.status = ERROR;
     state.error.message = payload;
     state.form.fields = initialState.form.fields
   },
   editBook: (state, { payload }) => {
     state.edit.status = REQUESTING;
     console.log(state.create.status);
-    console.log(form.fields);
-    console.log("editBook, payload: ", payload);
   },
   setForm: (state, { payload }) => {
-    const book = state.list.library.find((a) => (a.id = payload));
+    const book = state.list.library.find(a => a.id = payload);
 
     if (book) {
       state.form.fields = book;
@@ -70,7 +75,7 @@ const reducers = {
       state.error.message = `could not find book with id: ${payload}`;
     }
   },
-  editBookResult: (state, payload) => {
+  editBookResult: (state, { payload }) => {
     state.edit.status = SUCCESS;
     state.list.library = payload;
     state.form.fields = initialState.form.fields;
@@ -79,6 +84,7 @@ const reducers = {
   editBookError: (state) => {
     state.edit.status = ERROR;
     state.error.message = payload;
+    state.form.fields = initialState.form.fields;
   },
   editBookStatus: (state, { payload }) => {
     state.edit = payload;
