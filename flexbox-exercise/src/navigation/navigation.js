@@ -9,16 +9,10 @@ import FlexBox3 from "../screens/FlexBoxes/FlexBox3";
 import MadLibs from "../screens/MadLibs";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import NewBook from "../screens/Library/NewBook";
-import LibraryScreen from "../screens/Library/Library";
-import EditBook from "../screens/Library/EditBook";
-
-
 
 const Tab = createBottomTabNavigator();
 const FlexBoxStackNav = createNativeStackNavigator();
 const WelcomeStackNav = createNativeStackNavigator();
-const LibraryStackNav = createNativeStackNavigator();
 
 function FlexBoxStackScreen() {
   return (
@@ -39,24 +33,6 @@ function FlexBoxStackScreen() {
   )
 }
 
-function LibraryStackScreen() {
-  return (
-    <LibraryStackNav.Navigator>
-      <LibraryStackNav.Screen
-        name="Library"
-        component={LibraryScreen}
-      />
-      <LibraryStackNav.Screen
-        name="Add Book"
-        component={NewBook}
-      />
-      <LibraryStackNav.Screen
-        name="Edit Book"
-        component={EditBook}
-      />
-    </LibraryStackNav.Navigator>
-  )
-}
 
 function WelcomeStackScreen() {
   return (
@@ -68,11 +44,6 @@ function WelcomeStackScreen() {
       <WelcomeStackNav.Screen
         name="MadLibs"
         component={MadLibs}
-      />
-      <WelcomeStackNav.Screen
-        name="Library"
-        component={LibraryStackScreen}
-        options={{ headerShown: false }} //removes the the tab banner screen name
       />
     </WelcomeStackNav.Navigator>
   )

@@ -26,10 +26,11 @@ const stylesFn = () => {
             alignSelf:'end',
             justifySelf: 'end',
             margin: 15,
-            borderRadius: 4
+            borderRadius: 4,
+            backgroundColor: 'gray'
         },
         body: {
-            flex: 2
+            //flex: 1
         },
         storyText: {
             
